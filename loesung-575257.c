@@ -7,7 +7,7 @@
 
 #define MODE_WB (1)								/*mode: lese Wörterbuch*/
 #define MODE_IN (2)								/*mode: lese Input*/
-#define collisionParameter (107)        		/*hashset + 107 bei kolision MUSS primzahl sein*/
+#define collisionParameter (47)        		/*hashset + 47 bei kolision MUSS primzahl sein*/
 
 unsigned long hashtableSize = 2;   				/*MUSS power of 2 sein, besser 16,32 oder 64 wegen verdoppelung der hashtabelle*/
 												/*unsigned int -> 2147483647, 32 Bit unsigned long 9223372036854775807, 64 Bit*/
@@ -58,7 +58,7 @@ void resizeHashtabelle(void){
 	struct element *tabelleAktuell;
 	tabelleAktuell = ht;
 	/* verdoppeln */
-	hashtableSize <<= 1;
+	hashtableSize *= 2;
 	ht = (struct element *) malloc(sizeof(*ht)*hashtableSize);
 	for (i = 0; i < hashtableSize; i++) {
 		ht[i].key = NULL;
